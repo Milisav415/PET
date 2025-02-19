@@ -148,6 +148,8 @@ class BasePETCount(nn.Module):
             outputs_offsets[...,0] /= (img_h / 256)
             outputs_offsets[...,1] /= (img_w / 256)
 
+        # Ensure points_queries is on the same device as outputs_offsets[-1]
+        points_queries = points_queries.to(outputs_offsets[-1].device)
         outputs_points = outputs_offsets[-1] + points_queries
         out = {'pred_logits': outputs_class[-1], 'pred_points': outputs_points, 'img_shape': img_shape, 'pred_offsets': outputs_offsets[-1]}
     

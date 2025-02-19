@@ -123,4 +123,4 @@ work_dirs/
 outputs/
 data/
 tmp/
-pretrained/
+../pretrained/
